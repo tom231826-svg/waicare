@@ -13,6 +13,7 @@ def test_check_command(capsys):
 def test_run_with_manual_flood(tmp_path, capsys):
     code = main([
         "run", "--flood", "Ba:Western:2026-06-11:180", "--channels", "console,jsonl",
+        "--fixture", "tests/fixtures/fiji_live.json",
         "--state", str(tmp_path / "s.json"), "--bulletins", str(tmp_path / "b"),
         "--roster", str(tmp_path / "r.jsonl"), "--now", "2026-06-13T06:00",
     ])
