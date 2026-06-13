@@ -1,0 +1,36 @@
+audience: general_public
+display_name: "General public"
+voice: true
+
+sources:
+  - "Fiji Ministry of Health & Medical Services — LTDD prevention guidance"
+  - "WHO — Leptospirosis, Dengue, Typhoid fact sheets"
+
+prevention_actions:
+  - "Drink only boiled or treated water; store it covered."
+  - "Do not wade through floodwater if you can avoid it; if you must, wear boots and cover any cuts with a waterproof dressing, then wash with soap."
+  - "Tip out, cover or remove anything holding still water (tyres, buckets, drums) to stop mosquitoes breeding."
+  - "Wash hands with soap before eating and after the toilet; eat freshly cooked, hot food."
+  - "See a health centre early if you get a fever — do not wait."
+
+warning_signs:
+  - "Fever with muscle aches (especially calves), headache or red eyes after contact with floodwater or mud — possible leptospirosis; seek care early."
+  - "High fever with severe headache, pain behind the eyes or a rash — possible dengue. Warning signs needing care NOW: bleeding, severe belly pain, repeated vomiting, restlessness."
+  - "Watery diarrhoea with signs of dehydration (little urine, dizziness) — start oral rehydration and seek care, urgently for young children."
+
+messages:
+  imminent: |
+    🟠 HEAVY RAIN COMING — {area}, {division}
+    Up to {peak_rain}mm of rain may cause flooding. After floods, LTDD diseases (lepto, typhoid, dengue, diarrhoea) rise.
+    Prepare now:
+    • Store boiled/treated drinking water
+    • Move valuables up; keep boots ready
+    • Clear blocked drains and remove standing water
+    Reply with a health question any time.
+  active: |
+    🔴 POST-FLOOD HEALTH ALERT — {area}, {division}
+    For the next few weeks the risk of LTDD (leptospirosis, typhoid, dengue, diarrhoea) is high.
+    • Drink only boiled or treated water
+    • Don't wade in floodwater; if you must, wear boots and cover cuts
+    • Remove standing water to stop mosquitoes
+    • Fever, muscle aches or red eyes after floodwater? Go to your health centre early. Emergency: {emergency}.

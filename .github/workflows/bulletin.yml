@@ -1,0 +1,31 @@
+name: Daily bulletin (demo)
+
+# Runs the pipeline against LIVE Open-Meteo precipitation data daily and uploads
+# the generated Fiji post-flood disease-risk bulletin as a build artifact. This
+# is a public demonstration that WaiCare runs end-to-end on real data; it does
+# not message anyone (console channel only, no credentials).
+
+on:
+  schedule:
+    - cron: "0 18 * * *"   # 06:00 Pacific/Fiji
+  workflow_dispatch: {}
+
+jobs:
+  bulletin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+      - name: Generate live bulletin
+        run: waicare run --channels console --bulletins bulletins
+      - name: Upload bulletin
+        uses: actions/upload-artifact@v4
+        with:
+          name: fiji-disease-risk-bulletin
+          path: bulletins/
+          retention-days: 14

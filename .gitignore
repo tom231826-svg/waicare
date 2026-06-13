@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Heatline runtime artifacts
+state.json
+outbox.jsonl
+bulletins/outbox.jsonl
+
+# Opt-in subscriber contact data — NEVER commit real recipient data.
+# Only the example file is tracked.
+roster.jsonl
+!roster.example.jsonl
+
+# Secrets — credentials come from the environment, never from files in the repo.
+.env
+*.env
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

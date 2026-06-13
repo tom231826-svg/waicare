@@ -1,0 +1,42 @@
+# WaiCare country configuration — Fiji (pilot)
+#
+# Everything country-specific lives here. To deploy in another country, copy
+# this file, change the locations, languages, emergency contacts and the
+# heavy-rain threshold, and run. No code changes required.
+#
+# LTDD = Leptospirosis, Typhoid, Dengue, Diarrhoea — Fiji's Ministry of Health's
+# own term for the climate-driven diseases that surge after heavy rain/flooding.
+# heavy_rain_mm and golden_window_weeks MUST be reviewed with the health
+# authority before any live deployment — they are starting points, not clinical
+# thresholds.
+
+country: Fiji
+timezone: Pacific/Fiji
+languages: ["English", "iTaukei Fijian", "Fiji Hindi"]
+default_language: "English"
+
+emergency:
+  Emergency: "911"
+
+# A day with this much rain flags possible flooding and opens the high-risk window.
+heavy_rain_mm: 100
+golden_window_weeks: 4
+diseases: ["leptospirosis", "typhoid", "dengue", "diarrhoea"]
+
+# How far back to look for flooding that already happened (must cover the window)
+# and how far ahead to pre-warn.
+past_days: 28
+forecast_days: 7
+
+# Flood-prone towns across Fiji's divisions.
+locations:
+  - { name: "Ba",       lat: -17.53, lon: 177.67, division: "Western" }
+  - { name: "Nadi",     lat: -17.80, lon: 177.42, division: "Western" }
+  - { name: "Lautoka",  lat: -17.61, lon: 177.45, division: "Western" }
+  - { name: "Suva",     lat: -18.14, lon: 178.44, division: "Central" }
+  - { name: "Nausori",  lat: -18.02, lon: 178.55, division: "Central" }
+  - { name: "Labasa",   lat: -16.43, lon: 179.37, division: "Northern" }
+
+channels:
+  - console
+  - jsonl

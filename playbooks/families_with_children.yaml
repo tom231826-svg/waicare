@@ -1,0 +1,33 @@
+audience: families_with_children
+display_name: "Families with young children"
+voice: true
+
+sources:
+  - "Fiji Ministry of Health & Medical Services — LTDD prevention guidance"
+  - "WHO — Diarrhoeal disease and Dengue fact sheets"
+
+prevention_actions:
+  - "Young children dehydrate fast with diarrhoea — keep oral rehydration salts (ORS) at home and give after every loose stool."
+  - "Give children only boiled or treated water, and freshly cooked hot food."
+  - "Wash children's hands with soap before eating and after the toilet."
+  - "Keep children away from floodwater and stagnant pools."
+  - "Protect from mosquito bites: covers, repellent, and remove standing water around the home."
+
+warning_signs:
+  - "In a child: many watery stools, sunken eyes, no tears, little or no urine, drowsiness — dehydration; give ORS and seek care urgently."
+  - "High fever with a rash, bleeding gums/nose, severe belly pain or constant vomiting — possible severe dengue; go to a health facility now."
+
+messages:
+  imminent: |
+    🟠 HEAVY RAIN COMING — {area}, {division}
+    After floods, children are most at risk from diarrhoea and dengue.
+    Prepare:
+    • Have ORS (oral rehydration salts) at home
+    • Store boiled/treated water
+    • Clear standing water where mosquitoes breed
+  active: |
+    🔴 POST-FLOOD — PROTECT CHILDREN — {area}, {division}
+    For the next few weeks:
+    • Boiled/treated water and freshly cooked food only; wash hands with soap
+    • Give ORS for any diarrhoea; for a child with sunken eyes, no urine or drowsiness, seek care urgently
+    • Stop mosquito breeding; watch for high fever with rash or bleeding → go now. Emergency: {emergency}.

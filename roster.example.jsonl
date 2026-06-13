@@ -1,0 +1,14 @@
+# Example opt-in subscriber roster. Copy to roster.jsonl and fill with real,
+# consented contacts. roster.jsonl is git-ignored and must never be committed.
+# One JSON object per line. Lines starting with # and blank lines are ignored.
+#
+# audience  : must match a playbook in playbooks/ (general_public,
+#             flood_exposed_workers, families_with_children, community_health_worker)
+# channel   : console | jsonl | whatsapp | viber | sms | messenger
+# recipient : phone number / messaging id the channel understands (opaque)
+# division  : optional — only receive advisories for this division
+# language  : optional — English | iTaukei Fijian | Fiji Hindi (needs --llm)
+{"audience": "general_public", "channel": "whatsapp", "recipient": "+6799000001", "division": "Western", "language": "English"}
+{"audience": "flood_exposed_workers", "channel": "viber", "recipient": "viber-id-001", "division": "Western", "language": "iTaukei Fijian"}
+{"audience": "families_with_children", "channel": "sms", "recipient": "+6799000002", "division": "Central", "language": "Fiji Hindi"}
+{"audience": "community_health_worker", "channel": "whatsapp", "recipient": "+6799000003", "division": "Northern"}

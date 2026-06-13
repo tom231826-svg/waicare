@@ -1,0 +1,32 @@
+audience: flood_exposed_workers
+display_name: "Farmers, cleanup crews and anyone working in floodwater or mud"
+voice: false
+
+sources:
+  - "Fiji Ministry of Health & Medical Services — LTDD prevention guidance"
+  - "WHO — Leptospirosis fact sheet"
+
+prevention_actions:
+  - "Leptospirosis spreads through floodwater and mud contaminated by animal urine — it enters through cuts and the eyes, nose and mouth."
+  - "Wear covered boots and gloves when working in floodwater, mud or drains."
+  - "Cover every cut or graze with a waterproof dressing before you start."
+  - "Do not rub your eyes/face with muddy hands; wash with clean water and soap after work."
+  - "If you develop fever, chills or muscle aches (especially calves) within two weeks of floodwater contact, tell a health worker you have been exposed."
+
+warning_signs:
+  - "Fever, severe muscle pain (calves/lower back), headache, red eyes, or yellow skin/eyes after floodwater contact — possible leptospirosis. Seek care early and say you worked in floodwater; it is treatable when caught early."
+
+messages:
+  imminent: |
+    🟠 HEAVY RAIN COMING — {area}, {division}
+    If you'll work in floodwater or mud afterwards, leptospirosis is the main risk.
+    Get ready:
+    • Boots and gloves on hand
+    • Waterproof plasters to cover any cuts
+    • Plan to wash with soap after work
+  active: |
+    🔴 FLOODWATER WORKERS — {area}, {division}
+    Leptospirosis risk is high for the next few weeks.
+    • Wear boots/gloves in floodwater and mud
+    • Cover all cuts with waterproof dressings; wash with soap after
+    • Fever, calf pain or red eyes within 2 weeks of exposure → go to a health centre early and say you worked in floodwater. Emergency: {emergency}.

@@ -1,0 +1,35 @@
+# The megaphone playbook: community/zone nurses, village health workers and
+# faith/community leaders receive a briefing formatted to relay onward to the
+# households they serve, and to triage and refer early symptoms.
+audience: community_health_worker
+display_name: "Community nurses, village health workers and community leaders"
+voice: false
+
+sources:
+  - "Fiji Ministry of Health & Medical Services — LTDD prevention and surveillance guidance"
+  - "WHO — Leptospirosis, Dengue, Typhoid fact sheets"
+
+prevention_actions:
+  - "Relay the prevention message to your households, in person where you can: safe water, no bare-skin contact with floodwater, remove mosquito breeding sites, hand-washing."
+  - "Prioritise households with young children, pregnant women, the elderly and anyone doing flood cleanup."
+  - "Encourage early care-seeking for fever — leptospirosis and typhoid are treatable when caught early."
+  - "Note and report suspected cases to your health facility to support surveillance."
+
+warning_signs:
+  - "Teach families the danger signs: lepto (fever + calf pain + red eyes after floodwater), dengue warning signs (bleeding, severe belly pain, persistent vomiting), child dehydration (no urine, drowsiness). Any of these → refer to a health facility now."
+
+messages:
+  imminent: |
+    🟠 LTDD BRIEFING — RAIN COMING — {area}, {division}
+    Up to {peak_rain}mm forecast; flooding possible. Please prepare your households:
+    • Safe water (boil/treat), keep ORS ready
+    • Boots + cover cuts for anyone entering floodwater
+    • Clear mosquito breeding sites
+    Priority: children, pregnant women, elderly, cleanup workers.
+  active: |
+    🔴 LTDD BRIEFING — POST-FLOOD — {area}, {division}
+    High-risk window now. Please act with your households:
+    • Relay prevention (safe water, no bare skin in floodwater, remove standing water, hand-washing)
+    • Visit priority households; encourage early care for any fever
+    • Refer danger signs now: lepto (fever+calf pain+red eyes), severe dengue (bleeding, belly pain, vomiting), child dehydration
+    • Report suspected cases to your facility. Emergency: {emergency}.
