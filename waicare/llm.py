@@ -1,12 +1,14 @@
 """Swappable AI backends (Anthropic / OpenAI / none) behind one function.
 
-Heatline never *requires* an LLM. With no key configured, the system falls
-back to the reviewed playbook templates, so alert delivery is never blocked
-by a missing key or a provider outage (do-no-harm). Set:
+WaiCare never *requires* an LLM. With no key configured, the system falls back
+to static playbook templates, so advisory delivery is never blocked by a missing
+key or a provider outage (do-no-harm). Set:
 
-  HEATLINE_LLM_PROVIDER  anthropic | openai | none   (default: auto-detect)
-  HEATLINE_LLM_MODEL     model id override
+  WAICARE_LLM_PROVIDER  anthropic | openai | none   (default: auto-detect)
+  WAICARE_LLM_MODEL     model id override
   ANTHROPIC_API_KEY / OPENAI_API_KEY
+
+Legacy HEATLINE_LLM_* variables are accepted as shared-toolkit fallbacks.
 """
 
 from __future__ import annotations
@@ -27,21 +29,25 @@ class LLMError(RuntimeError):
     """Raised when no provider is usable or a provider call fails."""
 
 
+def _env(primary: str, fallback: str) -> str:
+    return os.environ.get(primary) or os.environ.get(fallback, "")
+
+
 def active_provider() -> str:
     """Resolve which backend to use: 'anthropic', 'openai' or 'none'."""
-    forced = os.environ.get("HEATLINE_LLM_PROVIDER", "").strip().lower()
+    forced = _env("WAICARE_LLM_PROVIDER", "HEATLINE_LLM_PROVIDER").strip().lower()
     if forced == "none":
         return "none"
     if forced == "anthropic":
         if not os.environ.get("ANTHROPIC_API_KEY"):
-            raise LLMError("HEATLINE_LLM_PROVIDER=anthropic but ANTHROPIC_API_KEY is not set")
+            raise LLMError("WAICARE_LLM_PROVIDER=anthropic but ANTHROPIC_API_KEY is not set")
         return "anthropic"
     if forced == "openai":
         if not os.environ.get("OPENAI_API_KEY"):
-            raise LLMError("HEATLINE_LLM_PROVIDER=openai but OPENAI_API_KEY is not set")
+            raise LLMError("WAICARE_LLM_PROVIDER=openai but OPENAI_API_KEY is not set")
         return "openai"
     if forced:
-        raise LLMError(f"unknown HEATLINE_LLM_PROVIDER {forced!r} (use anthropic, openai or none)")
+        raise LLMError(f"unknown WAICARE_LLM_PROVIDER {forced!r} (use anthropic, openai or none)")
     if os.environ.get("ANTHROPIC_API_KEY"):
         return "anthropic"
     if os.environ.get("OPENAI_API_KEY"):
@@ -60,7 +66,7 @@ def generate(system: str, user: str, max_tokens: int = 700) -> str:
 
 
 def _anthropic(system: str, user: str, max_tokens: int) -> str:  # pragma: no cover - network
-    model = os.environ.get("HEATLINE_LLM_MODEL", DEFAULT_ANTHROPIC_MODEL)
+    model = _env("WAICARE_LLM_MODEL", "HEATLINE_LLM_MODEL") or DEFAULT_ANTHROPIC_MODEL
     resp = requests.post(
         ANTHROPIC_URL,
         timeout=REQUEST_TIMEOUT_S,
@@ -89,7 +95,7 @@ def _anthropic(system: str, user: str, max_tokens: int) -> str:  # pragma: no co
 
 
 def _openai(system: str, user: str, max_tokens: int) -> str:  # pragma: no cover - network
-    model = os.environ.get("HEATLINE_LLM_MODEL", DEFAULT_OPENAI_MODEL)
+    model = _env("WAICARE_LLM_MODEL", "HEATLINE_LLM_MODEL") or DEFAULT_OPENAI_MODEL
     resp = requests.post(
         OPENAI_URL,
         timeout=REQUEST_TIMEOUT_S,

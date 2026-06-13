@@ -14,7 +14,7 @@ recognition will be pursued separately.
 | 6 | **Non-PII data / export mechanism** | ✅ | Bulletins are reproducible from open inputs; subscriber data is never embedded. |
 | 7 | **Privacy & applicable laws** | ✅ | Opt-in only; minimal data; contacts kept out of the repo and under the deploying authority's control. See [safety.md](safety.md). |
 | 8 | **Standards & best practices** | ✅ | Grounded in Fiji MoH LTDD guidance + WHO fact sheets; conventional Python packaging; CI on Python 3.9/3.11/3.12. |
-| 9 | **Do no harm by design** | ✅ | Event-bounded advisories (no indefinite nagging), per-event cap, **symptom triage that never diagnoses and always refers to care**, human-reviewed content, LLM constrained + template fallback. See [safety.md](safety.md). |
+| 9 | **Do no harm by design** | ✅ | Event-bounded advisories (no indefinite nagging), per-event cap, **symptom triage that never diagnoses and always refers to care**, guidance-grounded content requiring clinical sign-off before live use, LLM constrained + template fallback. See [safety.md](safety.md). |
 
 ## What is not yet done
 

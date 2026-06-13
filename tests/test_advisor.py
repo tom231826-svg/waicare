@@ -24,7 +24,7 @@ def test_area_status_line_active_vs_imminent():
 
 
 def test_answer_requires_llm(monkeypatch, fiji_config, playbooks_dir):
-    monkeypatch.setenv("HEATLINE_LLM_PROVIDER", "none")
+    monkeypatch.setenv("WAICARE_LLM_PROVIDER", "none")
     config = load_config(fiji_config)
     playbooks = load_playbooks(playbooks_dir)
     with pytest.raises(LLMError):

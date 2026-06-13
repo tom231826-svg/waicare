@@ -43,9 +43,9 @@ reviewed by native speakers before live use.
 
 ## Reliability / graceful degradation
 
-- The LLM is **optional**. With no key or on any error, WaiCare uses reviewed
-  templates in the default language — it degrades to a dependable broadcast, never
-  to silence.
+- The LLM is **optional**. With no key or on any error, WaiCare uses static
+  templates grounded in public guidance — it degrades to a dependable broadcast,
+  never to silence.
 - A corrupt state file is treated as empty rather than blocking advisories.
 - `Channel.send` never raises; one bad recipient never aborts the batch.
 

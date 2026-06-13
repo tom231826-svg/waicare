@@ -1,7 +1,7 @@
 """Turn a flood advisory window into audience-specific, multilingual messages.
 
 Two modes:
-- template: render the reviewed playbook message for the stage. Always available
+- template: render the configured playbook message for the stage. Always available
   — no API key, no network — in the configuration's default language.
 - llm: rewrite the template for the audience and, crucially for Fiji, translate
   it into the recipient's language (English, iTaukei Fijian or Fiji Hindi).

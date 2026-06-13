@@ -35,7 +35,7 @@ def test_activate_out_of_window(capsys):
 
 
 def test_ask_without_llm_errors(monkeypatch, capsys):
-    monkeypatch.setenv("HEATLINE_LLM_PROVIDER", "none")
+    monkeypatch.setenv("WAICARE_LLM_PROVIDER", "none")
     code = main(["ask", "--area", "Ba", "--days-since", "3", "fever and sore calves"])
     assert code == 2
     assert "error" in capsys.readouterr().err.lower()

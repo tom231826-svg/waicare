@@ -2,7 +2,7 @@
 
 A resident asks about symptoms after a flood ("fever and muscle aches since the
 flood — what should I watch for?"). WaiCare answers using ONLY the LTDD danger
-signs in the reviewed playbooks and the area's current flood status. It is
+signs in the configured playbooks and the area's current flood status. It is
 explicitly constrained to never diagnose, never name medicines, always surface
 danger signs, and always direct the person to the nearest health facility — and
 to lead with emergency action if the description is severe (do-no-harm).

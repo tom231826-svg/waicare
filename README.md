@@ -88,12 +88,14 @@ the advisory path on demand.
 
 ## AI backends (swappable, optional)
 
-WaiCare **never requires** an LLM. With no key it uses the reviewed playbook
-templates in the default language, so delivery is never blocked. Set
-`ANTHROPIC_API_KEY` or `OPENAI_API_KEY` (or `HEATLINE_LLM_PROVIDER`/`HEATLINE_LLM_MODEL`)
-and add `--llm` to enable AI personalization and translation. The model is
-constrained to reviewed facts, never diagnoses, and falls back to the template on
-any error (see [docs/safety.md](docs/safety.md)).
+WaiCare **never requires** an LLM. With no key it uses static playbook templates
+grounded in Fiji MoH and WHO public guidance, so delivery is never blocked. Set
+`ANTHROPIC_API_KEY` or `OPENAI_API_KEY` (optionally
+`WAICARE_LLM_PROVIDER=anthropic|openai|none` or `WAICARE_LLM_MODEL`) and add
+`--llm` to enable AI personalization and translation. Legacy `HEATLINE_LLM_*`
+variables are also accepted for shared-toolkit deployments. The model is
+constrained to configured source facts, never diagnoses, and falls back to the
+template on any error (see [docs/safety.md](docs/safety.md)).
 
 ## Adapting to another country
 
