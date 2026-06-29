@@ -28,7 +28,7 @@ from .compose import (
     validate_playbooks,
 )
 from .config import CountryConfig, load_config
-from .forecast import fetch_daily_precip, parse_daily
+from .forecast import ForecastError, fetch_daily_precip, parse_daily
 from .roster import Subscriber, load_roster
 from .state import load_state, save_state
 from .trigger import (
@@ -107,6 +107,7 @@ def run_pipeline(
 
 def _gather_events(config: CountryConfig, fixtures: Optional[Dict[str, dict]]) -> List[FloodEvent]:
     events: List[FloodEvent] = []
+    failed_locations: List[str] = []
     for location in config.locations:
         if fixtures is not None:
             payload = fixtures.get(location.name)
@@ -115,10 +116,19 @@ def _gather_events(config: CountryConfig, fixtures: Optional[Dict[str, dict]]) -
                 continue
             dailies = parse_daily(payload)
         else:
-            dailies = fetch_daily_precip(
-                location.lat, location.lon, config.past_days, config.forecast_days, config.timezone
-            )
+            try:
+                dailies = fetch_daily_precip(
+                    location.lat, location.lon, config.past_days, config.forecast_days, config.timezone
+                )
+            except ForecastError as exc:
+                failed_locations.append(location.name)
+                log.warning("weather unavailable for %s; skipping this location: %s", location.name, exc)
+                continue
         events.extend(detect_rain_events(location, dailies, config.heavy_rain_mm))
+    if fixtures is None and len(failed_locations) == len(config.locations):
+        raise ForecastError(
+            f"Open-Meteo failed for all {len(failed_locations)} location(s): {', '.join(failed_locations)}"
+        )
     return events
 
 
